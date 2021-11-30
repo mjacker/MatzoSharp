@@ -30,7 +30,7 @@ namespace HW
                     Console.WriteLine("1) Project where you can print your name. \n0) Back.");
                     break;
                 case "2":
-                    Console.WriteLine("1) Perimeter of a poligon. \n2) Centigrados to Fahrenheit..\n0) Back");
+                    Console.WriteLine("1) Perimeter of a poligon. \n2) Convert celsius to fahrenheit.\n0) Back");
                     break;
                 case "3":
                     Console.WriteLine("1) Input a number (1-12), then recieve a month name. \n2) Input a number, check odd or even. \n3) Parking Software. \n0) Back.");
