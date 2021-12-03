@@ -55,6 +55,8 @@
     <Compile Include="HWn\HW03ex2.cs" />
     <Compile Include="HWn\HW04ex2.cs" />
     <Compile Include="HWList.cs" />
+    <Compile Include="HWn\HW05ex1.cs" />
+    <Compile Include="HWn\HW05ex2.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

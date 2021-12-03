@@ -24,7 +24,7 @@ namespace HW
             switch (n)
             {
                 case "0":
-                    Console.WriteLine("1) Homework 1 - Print your name.\n2) Homework 2 - Basic calculation. (NOT DONE)\n3) Homework 3 - Using switch cases.\n4) Homework 4 - Using for cases.\n0) Exit.");
+                    Console.WriteLine("1) Homework 1 - Print your name.\n2) Homework 2 - Basic calculation. \n3) Homework 3 - Using switch cases.\n4) Homework 4 - Using for cases.\n5) Homework 5 - Methods. \n0) Exit.");
                     break;
                 case "1":
                     Console.WriteLine("1) Project where you can print your name. \n0) Back.");
@@ -37,6 +37,9 @@ namespace HW
                     break;
                 case "4":
                     Console.WriteLine("1) Compute a number to a exponent (negavite or positive). \n2) Numeros primos. \n0) Back.");
+                    break;
+                case "5":
+                    Console.WriteLine("1) Degrees to radians. \n2) Figures areas. (circle, triangle, square). \n0) Back.");
                     break;
             }
         }
