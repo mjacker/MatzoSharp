@@ -8,50 +8,181 @@ namespace HWn
 {
     class HW06ex1
     {
+        // Static Menu Variables
+        private static IDictionary<int, string> menu = new Dictionary<int, string>()
+        {
+            { 0, "Back." },
+            { 1, "Enter student notes." },
+            { 2, "Print all notes." },
+            { 3, "Compute average." },
+            { 4, "Find min max notes." },
+            { 5, "Delete notes." },
+        };
+
+        // Static Students/Class/Notes data
+        private static int numberClass = 0;
+        private static double[][] jaggedStudenNotesArray;
+        private static double actualNote;
+        private static double totalNote = 0;
+        private static int totalStudent = 0;
+
         public static void Main()
         {
-            // calcular de promedio.
-            Console.Write("Enter number of class: ");
-            int numberClass = Convert.ToInt32(Console.ReadLine());
-            double [][] jaggedStudenNotesArray = new double[numberClass][];
-            double actualNote;
-            double totalNote = 0;
-            int totalStudent = 0;
-
-            for (int i = 0; i < numberClass; i++)
+            try
             {
-                Console.Write("\n\nPlease enter number of students in class number {0}: ", i + 1);
-                int numStudent = Convert.ToInt32(Console.ReadLine());
-                jaggedStudenNotesArray[i] = new double[numStudent];
-                for (int j = 0; j < numStudent; j++)
+                PrintMenu();
+                int varOption = ChooseOption();
+                while (varOption > 0)
                 {
-                    Console.Write("   Enter id {0} note: ", j + 1);
-                    actualNote = Convert.ToDouble(Console.ReadLine());
-                    jaggedStudenNotesArray[i][j] = actualNote;
-                    totalNote += actualNote;
-                    totalStudent += 1;
+                    switch (varOption)
+                    {
+                        case 1:
+                            SetStudentNotes();
+                            break;
+                        case 2:
+                            PrintJaggedArray(jaggedStudenNotesArray);
+                            break;
+                        case 3:
+                            AverageStudentNotes();
+                            break;
+                        case 4:
+                            MinMaxNotes();
+                            break;
+                        case 5:
+                            DeleteNotes();
+                            break;
+                    }
+                    Console.WriteLine("Press enter to continue...");
+                    Console.ReadLine();
+                    PrintMenu();
+                    varOption = ChooseOption();
                 }
             }
-
-            printJaggedArray(jaggedStudenNotesArray);
-            Console.WriteLine("\n\nThe average note is: {0}", totalNote / totalStudent);
+            catch (Exception Ex)
+            {
+                Console.WriteLine("Warning: {0}", Ex.Message);
+            }
         }
 
-        private static void printJaggedArray(double[][] jaggedArray)
+
+        // #### FUNCTIONS ####//
+        private static void PrintMenu()
         {
-            Console.WriteLine("-----------------");
-            int dimention1 = jaggedArray.Length;
-            int dimention2;
-            for (int i = 0; i < dimention1; i++)
+
+            System.Console.Clear();
+            Console.WriteLine("" +
+                "#### Welcome to Homework number 6 ####\n" +
+                "______________________________________\n");
+            for (int i = 1; i <= menu.Count - 1; i++)
             {
-                Console.WriteLine("Class number: {0}", i + 1);
-                dimention2 = jaggedArray[i].Length;
-                for (int j = 0; j < dimention2; j++)
-                {
-                    Console.WriteLine("   Student id {0} note: {1}.", j + 1, jaggedArray[i][j]);
-                }
-                Console.Write("\n");
+                Console.WriteLine("\t{0}) {1}", i, menu[i]);
             }
+            Console.WriteLine("\t{0}) {1}", 0, menu[0]);
+        }
+
+        private static int ChooseOption()
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.Write(">> ");
+                    int optionChoosen = Convert.ToInt32(Console.ReadLine());
+                    if (optionChoosen > menu.Count - 1)
+                    {
+                        throw new FormatException();
+                    }
+                    return optionChoosen;
+                }
+                catch (Exception Ex)
+                {
+                    //if (Ex.GetType() == FormatException){ //How to catch this Exception???
+                    Console.WriteLine("\nPlease enter a number between 0 and {0} and try again.", menu.Count - 1);
+                    //}
+                }
+            }
+        }
+
+        private static void SetStudentNotes()
+        {
+            if (jaggedStudenNotesArray == null)
+            {
+                Console.Write("Enter number of class: ");
+                numberClass = Convert.ToInt32(Console.ReadLine()); //need try catch
+                jaggedStudenNotesArray = new double[numberClass][];
+
+                for (int i = 0; i < numberClass; i++)
+                {
+                    Console.Write("\n\nPlease enter number of students in class number {0}: ", i + 1);
+                    int numStudent = Convert.ToInt32(Console.ReadLine());
+                    jaggedStudenNotesArray[i] = new double[numStudent];
+                    for (int j = 0; j < numStudent; j++)
+                    {
+                        Console.Write("   Enter id {0} note: ", j + 1);
+                        actualNote = Convert.ToDouble(Console.ReadLine());
+                        jaggedStudenNotesArray[i][j] = actualNote;
+                        totalNote += actualNote;
+                        totalStudent += 1;
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Warning: Students notes already charged.");
+            }    
+        }
+
+        private static void PrintJaggedArray(double[][] jaggedArray)
+        {
+            if (jaggedArray != null)
+            {
+                Console.WriteLine("-----------------");
+                int dimention1 = jaggedArray.Length;
+                int dimention2;
+                for (int i = 0; i < dimention1; i++)
+                {
+                    Console.WriteLine("Class number: {0}", i + 1);
+                    dimention2 = jaggedArray[i].Length;
+                    for (int j = 0; j < dimention2; j++)
+                    {
+                        Console.WriteLine("   Student id {0} note: {1}.", j + 1, jaggedArray[i][j]);
+                    }
+                    Console.Write("\n");
+                }
+            }
+            else
+                throw new NullReferenceException("Che, no se puede imprimir algo que aún no cargaste!!.");
+        }
+
+        private static void AverageStudentNotes()
+        {
+            Console.WriteLine("CALL: Average Student's Notes.");
+            throw new NotImplementedException();
+        }
+
+        private static void MinMaxNotes()
+        {
+            Console.WriteLine("CALL: Find min and Max notes.");
+            throw new NotImplementedException();
+        }
+
+        private static void DeleteNotes()
+        {
+            Console.Write("Are you sure you want to delete all student's notes? (YES/NO)\n>> ");
+            string option = Console.ReadLine();
+            if (option == "YES")
+            {
+                numberClass = 0;
+                jaggedStudenNotesArray = null;
+                actualNote = 0;
+                totalNote = 0;
+                totalStudent = 0;
+                Console.WriteLine("All notes deleted.");
+            }
+            else
+            {
+                Console.WriteLine("Operation cancelled.");
+            }    
         }
     }
 }
