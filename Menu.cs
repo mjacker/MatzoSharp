@@ -49,7 +49,7 @@ namespace HW
                     Console.WriteLine("1) Degrees to radians. \n2) Figures areas. (circle, triangle, square). \n0) Back.");
                     break;
                 case "6":
-                    Console.WriteLine("1) Students Notes radians. \n0) Back.");
+                    Console.WriteLine("1) Compute average, min, max Student's notes program. \n0) Back.");
                     break;
             }
         }

@@ -25,6 +25,8 @@ namespace HWn
         private static double actualNote;
         private static double totalNote = 0;
         private static int totalStudent = 0;
+        private static double maxNote = 0;
+        private static double minNote = 0;
 
         public static void Main()
         {
@@ -40,7 +42,7 @@ namespace HWn
                             SetStudentNotes();
                             break;
                         case 2:
-                            PrintJaggedArray(jaggedStudenNotesArray);
+                            PrintJaggedArray();
                             break;
                         case 3:
                             AverageStudentNotes();
@@ -132,20 +134,20 @@ namespace HWn
             }    
         }
 
-        private static void PrintJaggedArray(double[][] jaggedArray)
+        private static void PrintJaggedArray()
         {
-            if (jaggedArray != null)
+            if (jaggedStudenNotesArray != null)
             {
                 Console.WriteLine("-----------------");
-                int dimention1 = jaggedArray.Length;
+                int dimention1 = jaggedStudenNotesArray.Length;
                 int dimention2;
                 for (int i = 0; i < dimention1; i++)
                 {
                     Console.WriteLine("Class number: {0}", i + 1);
-                    dimention2 = jaggedArray[i].Length;
+                    dimention2 = jaggedStudenNotesArray[i].Length;
                     for (int j = 0; j < dimention2; j++)
                     {
-                        Console.WriteLine("   Student id {0} note: {1}.", j + 1, jaggedArray[i][j]);
+                        Console.WriteLine("   Student id {0} note: {1}.", j + 1, jaggedStudenNotesArray[i][j]);
                     }
                     Console.Write("\n");
                 }
@@ -156,14 +158,37 @@ namespace HWn
 
         private static void AverageStudentNotes()
         {
-            Console.WriteLine("CALL: Average Student's Notes.");
-            throw new NotImplementedException();
+            if (jaggedStudenNotesArray != null)
+            {
+                Console.WriteLine("The average note is: {0}", totalNote / totalStudent);
+            }
+            else
+                throw new NullReferenceException("Average can not be computed because notes had not register!.");
+
         }
 
         private static void MinMaxNotes()
         {
-            Console.WriteLine("CALL: Find min and Max notes.");
-            throw new NotImplementedException();
+            if (jaggedStudenNotesArray != null)
+            {
+                int dimention1 = jaggedStudenNotesArray.Length;
+                int dimention2;
+                maxNote = jaggedStudenNotesArray[0][0];
+                minNote = jaggedStudenNotesArray[0][0];
+                for (int i = 0; i < dimention1; i++)
+                {
+                    dimention2 = jaggedStudenNotesArray[i].Length;
+                    for (int j = 0; j < dimention2; j++)
+                    {
+                        if (jaggedStudenNotesArray[i][j] > maxNote) maxNote = jaggedStudenNotesArray[i][j];
+                        if (jaggedStudenNotesArray[i][j] < minNote) minNote = jaggedStudenNotesArray[i][j];
+                    }
+                }
+                Console.WriteLine("\nThe min Note is: {0}", minNote);
+                Console.WriteLine("\nThe max Note is: {0}", maxNote);
+            }
+            else
+                throw new NullReferenceException("Che, no se puede imprimir algo que aún no cargaste!!.");
         }
 
         private static void DeleteNotes()
