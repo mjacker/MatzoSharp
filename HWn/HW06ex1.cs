@@ -110,8 +110,8 @@ namespace HWn
             if (jaggedStudenNotesArray == null)
             {
                 Console.Write("Enter number of class: ");
-                numberClass = Convert.ToInt32(Console.ReadLine()); //need try catch
-                jaggedStudenNotesArray = new double[numberClass][];
+                    numberClass = Convert.ToInt32(Console.ReadLine()); //need try catch
+                    jaggedStudenNotesArray = new double[numberClass][];
 
                 for (int i = 0; i < numberClass; i++)
                 {
@@ -138,20 +138,20 @@ namespace HWn
         {
             if (jaggedStudenNotesArray != null)
             {
-                Console.WriteLine("-----------------");
+            Console.WriteLine("-----------------");
                 int dimention1 = jaggedStudenNotesArray.Length;
-                int dimention2;
-                for (int i = 0; i < dimention1; i++)
-                {
-                    Console.WriteLine("Class number: {0}", i + 1);
+            int dimention2;
+            for (int i = 0; i < dimention1; i++)
+            {
+                Console.WriteLine("Class number: {0}", i + 1);
                     dimention2 = jaggedStudenNotesArray[i].Length;
-                    for (int j = 0; j < dimention2; j++)
-                    {
+                for (int j = 0; j < dimention2; j++)
+                {
                         Console.WriteLine("   Student id {0} note: {1}.", j + 1, jaggedStudenNotesArray[i][j]);
-                    }
-                    Console.Write("\n");
                 }
+                Console.Write("\n");
             }
+        }
             else
                 throw new NullReferenceException("Che, no se puede imprimir algo que aún no cargaste!!.");
         }
