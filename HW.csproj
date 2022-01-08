@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HWn\HW07ex1.cs" />
     <Compile Include="HWn\HW04ex1.cs" />
     <Compile Include="HWn\HW01ex1.cs" />
     <Compile Include="HWn\HW02ex1.cs" />

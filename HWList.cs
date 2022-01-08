@@ -14,6 +14,7 @@ using h4e2 = HWn.HW04ex2;
 using h5e1 = HWn.HW05ex1;
 using h5e2 = HWn.HW05ex2;
 using h6e1 = HWn.HW06ex1;
+using h7e1 = HWn.HW07ex1;
 
 namespace HW
 {
@@ -57,6 +58,9 @@ namespace HW
                     break;
                 case "6-1":
                     h6e1.Main();
+                    break;
+                case "7-1":
+                    h7e1.Main();
                     break;
                 default:
                     Console.WriteLine("Invalid option. Please try again.");

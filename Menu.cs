@@ -31,6 +31,7 @@ namespace HW
                         "4) Homework 4 - Using for cases.\n" +
                         "5) Homework 5 - Methods.\n" +
                         "6) Homework 6 - Matrix of Arrays.\n" + 
+                        "7) Homework 7 - Bank account.\n" +
                         "0) Exit.");
                     break;
                 case "1":
@@ -50,6 +51,9 @@ namespace HW
                     break;
                 case "6":
                     Console.WriteLine("1) Compute average, min, max Student's notes program. \n0) Back.");
+                    break;
+                case "7":
+                    Console.WriteLine("1) Bank accont. \n0) Back.");
                     break;
             }
         }
