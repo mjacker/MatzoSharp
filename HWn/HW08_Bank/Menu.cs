@@ -15,9 +15,9 @@ namespace HWn.HW08_Bank
             Console.Clear();
             Console.WriteLine("     MJBANK    \n----------");
             Console.WriteLine("1) New client account.");
-            Console.WriteLine("2) Search client by ID. Not implemented.");
+            Console.WriteLine("2) Search client by ID..");
             Console.WriteLine("3) Show all clients.");
-            Console.WriteLine("4) Delete client account. Not implemented.");
+            Console.WriteLine("4) Delete client account.");
             Console.WriteLine("5) Exit.");
         }
 

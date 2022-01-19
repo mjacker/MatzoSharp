@@ -82,6 +82,8 @@ namespace HWn.HW08_Bank
                             Console.WriteLine("El usuario con id {0} no existe.", idToFind);
                         }
 
+                        // se puede implementar aqui crear cuenta de usuario.
+
                         Console.WriteLine("Press enter to continue...");
                         Console.ReadKey();
                         break;
@@ -92,6 +94,45 @@ namespace HWn.HW08_Bank
                         {
                             Console.WriteLine(client.ToStringOneLine());
                         }
+                        Console.WriteLine("Press enter to continue...");
+                        Console.ReadKey();
+                        break;
+                    case "4":
+                        int idToDelete;
+                        Client targetUserToDelete = null;
+                        Console.WriteLine("Enter client ID to delete: ");
+                        idToDelete = Convert.ToInt32(Console.ReadLine());
+                        foreach (Client client in listClients)
+                        {
+                            if (client.GetId().CompareTo(idToDelete) == 0)
+                            {
+                                Console.WriteLine("Deleting user.!");
+                                targetUserToDelete = client;
+                                listClients.Remove(targetUserToDelete);
+                                Console.WriteLine("User deleted successfully!");
+
+                                using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                                {
+                                    fs.SetLength(0);
+                                    using (StreamWriter sw = new StreamWriter(fs))
+                                    {
+                                        foreach (Client client2 in listClients)
+                                        {
+                                            sw.WriteLine(client2.ToCVS());
+                                        }
+                                    }
+                                }
+                                break;
+                            }
+                        }
+
+                        foreach (Client client in listClients)
+                        {
+                            Console.WriteLine(client.ToStringOneLine());
+                        }
+
+                        // se puede implementar aqui crear cuenta de usuario.
+
                         Console.WriteLine("Press enter to continue...");
                         Console.ReadKey();
                         break;

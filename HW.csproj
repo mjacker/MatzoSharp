@@ -59,6 +59,10 @@
     <Compile Include="HWn\HW05ex1.cs" />
     <Compile Include="HWn\HW05ex2.cs" />
     <Compile Include="HWn\HW06ex1.cs" />
+    <Compile Include="HWn\HW08_Bank\BankAcc.cs" />
+    <Compile Include="HWn\HW08_Bank\Client.cs" />
+    <Compile Include="HWn\HW08_Bank\HW08ex1.cs" />
+    <Compile Include="HWn\HW08_Bank\Menu.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="NewMenu.cs" />
     <Compile Include="Program.cs" />
