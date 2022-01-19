@@ -32,6 +32,7 @@ namespace HW
                         "5) Homework 5 - Methods.\n" +
                         "6) Homework 6 - Matrix of Arrays.\n" + 
                         "7) Homework 7 - Bank account.\n" +
+                        "8) Homework 8 - Bank account using lists.\n" +
                         "0) Exit.");
                     break;
                 case "1":
@@ -54,6 +55,9 @@ namespace HW
                     break;
                 case "7":
                     Console.WriteLine("1) Bank accont. \n0) Back.");
+                    break;
+                case "8":
+                    Console.WriteLine("1) Bank accont using Lists. \n0) Back.");
                     break;
             }
         }
