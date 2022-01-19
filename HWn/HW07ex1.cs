@@ -10,8 +10,10 @@ namespace HWn
     {
         public static void Main()
         {
-            //Variables locales
-            string nombreAr, apellidoAr, direccion, rfc;
+
+
+        //Variables locales
+        string nombreAr, apellidoAr, direccion, rfc;
             double saldo;
 
             Console.WriteLine("Bienvenido a MJBANK Inc.\n");
@@ -31,6 +33,18 @@ namespace HWn
 
             CuentaBancaria CB = new CuentaBancaria(nombreAr, apellidoAr, saldo, direccion, rfc);
 
+            ///aqui empieza
+            ///
+            IDictionary<int, CuentaBancaria> dBank = new Dictionary<int, CuentaBancaria>()
+            {
+                { 0,  CB},
+            };
+
+            Console.WriteLine("TEMP: {0}", dBank[0].ConsultaSaldo());
+
+            Console.ReadKey();
+
+        /// aqui termina
 
             string op;
             do
@@ -43,39 +57,40 @@ namespace HWn
                     "\n4) Mostrar información de la cuenta." +
                     "\n5) Salir.");
                 op = Console.ReadLine();
+                Console.Clear();
                 switch (op)
                 {
                     case "1":
-                        Console.Clear();
                         Console.Write("¿Cual es el monto que desea depositar?: ");
                         double cargar = Convert.ToDouble(Console.ReadLine());
                         CB.Deposito(cargar);
-                        Console.ReadKey();
+                        //Console.ReadKey();
                         break;
                     case "2":
-                        Console.Clear();
+                        //Console.Clear();
                         Console.Write("¿Cual es el monto que desea retirar?: ");
                         double retirar = Convert.ToDouble(Console.ReadLine());
                         CB.Retiro(retirar);
-                        Console.ReadKey();
+                        //Console.ReadKey();
                         break;
                     case "3":
-                        Console.Clear();
+                        //Console.Clear();
                         Console.Write("El saldo actual es: {0}", CB.ConsultaSaldo());
-                        Console.ReadKey();
+                        //Console.ReadKey();
                         break;
                     case "4":
-                        Console.Clear();
+                        //Console.Clear();
                         Console.WriteLine(CB.ToString());
-                        Console.ReadKey();
+                        //Console.ReadKey();
                         break;
                     case "5":
                         break;
                     default:
                         Console.Write("Opcion incorrecta.");
-                        Console.ReadKey();
+                        //Console.ReadKey();
                         break;
                 }
+                Console.ReadKey();
             } while (op != "5");
         }
     }
@@ -188,19 +203,34 @@ namespace HWn
         // Metodos
         public double Deposito(double dineroPa)
         {
-            saldo += dineroPa;
-            return saldo;
+            if (dineroPa > 0)
+            {
+                saldo += dineroPa;
+                return saldo;
+            }
+            else
+            {
+                Console.WriteLine("Monto a depositar no puede ser negativo.");
+                return saldo;
+            }
         }
 
         public double Retiro(double dineroPa)
         {
-            if ((saldo - dineroPa) >= 0)
+            if (dineroPa > 0)
             {
-                saldo -= dineroPa;
+                if ((saldo - dineroPa) >= 0)
+                {
+                    saldo -= dineroPa;
+                }
+                else
+                    Console.WriteLine("Saldo insuficiente.");
             }
             else
-                Console.WriteLine("Saldo insuficiente.");
+            {
+                Console.WriteLine("Monto a retirar no puede ser negativo.");
 
+            }
             return saldo;
         }
 
