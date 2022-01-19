@@ -64,24 +64,17 @@ namespace HWn
                         Console.Write("¿Cual es el monto que desea depositar?: ");
                         double cargar = Convert.ToDouble(Console.ReadLine());
                         CB.Deposito(cargar);
-                        //Console.ReadKey();
                         break;
                     case "2":
-                        //Console.Clear();
                         Console.Write("¿Cual es el monto que desea retirar?: ");
                         double retirar = Convert.ToDouble(Console.ReadLine());
                         CB.Retiro(retirar);
-                        //Console.ReadKey();
                         break;
                     case "3":
-                        //Console.Clear();
                         Console.Write("El saldo actual es: {0}", CB.ConsultaSaldo());
-                        //Console.ReadKey();
                         break;
                     case "4":
-                        //Console.Clear();
                         Console.WriteLine(CB.ToString());
-                        //Console.ReadKey();
                         break;
                     case "5":
                         break;
